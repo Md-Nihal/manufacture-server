@@ -90,20 +90,20 @@ async function run() {
       const requesterAccount = await userCollection.findOne({ email: requester });
       if (requesterAccount.role !== 'admin') {
         res.status(403).send({message: 'forbidden'})
-        
+    
       }
       else{
         const filter = { email: email };
         const updateDoc = {
           $set: { role: 'admin' },
         };
+
         const result = await userCollection.updateOne(filter, updateDoc);
         res.send(result);
        
       }
     })
       
-
     app.put('/user/:email', async (req, res) => {
       const email = req.params.email;
       const user = req.body;
