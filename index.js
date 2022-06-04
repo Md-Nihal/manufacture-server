@@ -1,3 +1,7 @@
+/*
+https://github.com/programming-hero-web-course1/manufacturer-website-server-side-Md-Nihal
+*/ 
+
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
@@ -10,8 +14,11 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.k5jfa.mongodb.net/?retryWrites=true&w=majority`
+// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.k5jfa.mongodb.net/?retryWrites=true&w=majority`
 
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.bkuu2ps.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 function verifyJWT(req, res, next) {
@@ -57,6 +64,7 @@ async function run() {
 
     app.get('/user', verifyJWT, async (req, res) => {
       const users = await userCollection.find().toArray();
+      console.log(users)
       res.send(users);
     });
 
@@ -67,12 +75,7 @@ async function run() {
       res.send({admin: isAdmin})
     })
 
-  //   app.get('/reviewData', async(req,res) =>{
-  //     const cursor1 =moreServicesCollection.find({});
-  //     const services2 =await cursor1.toArray();
-  //     console.log(services2)
-  //     res.send(services2);
-  // })
+    
 
     app.get('/reviewData',  async(req,res) =>{
       // const cursor5 =ratingData.find({});
