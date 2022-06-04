@@ -132,7 +132,7 @@ async function run() {
       res.send(services);
     })
 
-    app.get('/booking', verifyJWT, async(req, res) =>{
+    app.get('/booking' , verifyJWT , async(req, res) =>{
       const customer = req.query.customer;
       const decodedEmail = req.decoded.email;
       if (customer=== decodedEmail){
