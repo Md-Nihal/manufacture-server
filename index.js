@@ -45,8 +45,6 @@ async function run() {
     const moreServicesCollection =client.db('tata-services').collection('moreServices')
     const ratingData= client.db('tata-services').collection('reviewData')
    
- 
-    
     app.get('/service', async (req, res) => {
       const query = {};
       const cursor = serviceCollection.find(query);
