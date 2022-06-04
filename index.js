@@ -167,7 +167,6 @@ async function run() {
       return res.send({ success: true, result });
     })
 
-
     app.delete('/user/_id', verifyJWT,  async (req, res) => {
       const _id = req.params._id;
       const filter = { id: _id};
