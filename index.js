@@ -76,7 +76,6 @@ async function run() {
     })
 
     
-
     app.get('/reviewData',  async(req,res) =>{
       // const cursor5 =ratingData.find({});
       const services5 =await ratingData.find().toArray();
